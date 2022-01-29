@@ -6,8 +6,6 @@ public class SCR_WaveDeath : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        print("oh");
         Destroy(collision.gameObject);
-
     }
 }

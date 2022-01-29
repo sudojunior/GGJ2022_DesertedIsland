@@ -28,8 +28,6 @@ public class SCR_WaveManager : MonoBehaviour
     void spawnWave()
     {
         Instantiate(wave1, new Vector2(-1920f, objectY), Quaternion.identity, waveHolder.transform);
-        //wave1.transform.SetParent(waveHolder.transform);
         cloneSpawned = true;
-
     }
 }
