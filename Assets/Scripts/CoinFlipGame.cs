@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CoinFlipGame : MonoBehaviour
@@ -17,9 +18,17 @@ public class CoinFlipGame : MonoBehaviour
     bool flipped = false;
     float timeAcc = 0;
 
+    bool IsMoving
+    {
+        get => (
+            Vector3.Distance(rb.velocity, Vector3.zero) > 0.1f ||
+            Vector3.Angle(rb.angularVelocity, Vector3.zero) > 0.1f
+        );
+    }
+
     public enum CoinState
     {
-        None,
+        Moving,
         Heads,
         Tails,
         Edge
@@ -32,7 +41,7 @@ public class CoinFlipGame : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -40,7 +49,7 @@ public class CoinFlipGame : MonoBehaviour
         if (flipped)
         {
             timeAcc += Time.fixedDeltaTime;
-            if (Vector3.Distance(rb.velocity, Vector3.zero) > 0.1f)
+            if (IsMoving)
                 return; // still moving
             if (timeAcc >= 5)
             {
@@ -49,7 +58,7 @@ public class CoinFlipGame : MonoBehaviour
                 Debug.Log($"CoinState is {state}, {timeAcc}", gameObject);
                 switch (state)
                 {
-                    case CoinState.None:
+                    case CoinState.Moving:
                         // still moving
                         timeAcc = 0;
                         break;
@@ -68,19 +77,20 @@ public class CoinFlipGame : MonoBehaviour
         flipped = true;
         // transform.position = new Vector3(0, 0.2f, 0);
         // transform.rotation = Quaternion.identity;
-
-        rb.AddForce((Random.value + 0.5f) * power * transform.up);
+        Vector3 direction = state == CoinState.Tails ? -transform.up : transform.up;
+        rb.AddForce((Random.value + 0.5f) * power * direction);
         rb.AddTorque(Random.onUnitSphere * power, ForceMode.Force);
     }
 
 
     private CoinState DetermineOutcome()
     {
-        if (Vector3.Distance(rb.velocity, Vector3.zero) > 0.1f)
-            return CoinState.None;
-        if (Physics.Raycast(transform.position, transform.up.normalized, 0.1f))
+        Debug.Log($"{rb.velocity}, {rb.angularVelocity}");
+        if (IsMoving)
+            return CoinState.Moving;
+        else if (Physics.Raycast(transform.position, transform.up.normalized, 1f))
             return CoinState.Heads;
-        else if (Physics.Raycast(transform.position, -transform.up.normalized, 0.1f))
+        else if (Physics.Raycast(transform.position, -transform.up.normalized, 1f))
             return CoinState.Tails;
         else
             return CoinState.Edge;
@@ -90,8 +100,8 @@ public class CoinFlipGame : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.up.normalized * 2);
+        Gizmos.DrawLine(transform.position, transform.up * 2);
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, -transform.up.normalized * 2);
+        Gizmos.DrawLine(transform.position, -transform.up * 2);
     }
 }
