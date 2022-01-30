@@ -9,6 +9,7 @@ public class SCR_DesperMart : MonoBehaviour
     public Animator animController;
 
     public GameObject trouserOverlay;
+    public GameObject characterLegs;
     public GameObject transactionOverlay;
 
     public Sprite LogsImage;
@@ -22,7 +23,9 @@ public class SCR_DesperMart : MonoBehaviour
     public void BuyTrousers()
     {
         BuyItem(100, TrousersImage);
+
         trouserOverlay.SetActive(true);
+        characterLegs.SetActive(true);
     }
 
     public void BuyItem(int cost, Sprite image)
