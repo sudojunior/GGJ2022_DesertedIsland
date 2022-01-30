@@ -9,8 +9,6 @@ public class SCR_ButtonManager : MonoBehaviour
     public GameObject App2;
     public GameObject App3;
 
-    public SCR_GameManager gameManager;
-
     void Start()
     {
         desktopApp.SetActive(false);

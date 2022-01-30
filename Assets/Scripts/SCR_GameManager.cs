@@ -10,7 +10,13 @@ public class SCR_GameManager : MonoBehaviour
     public int daysSurvived; //Counts the amount of fdays the player has survived
     public TMP_Text balTextSlot;
 
+    public SCR_ButtonManager buttonManager;
+
     public Animator dayNightAnim;
+    public Animator arm1Anim;
+    public Animator arm2Anim;
+    public Animator laptopAnim;
+    public Animator monitorOverlayAnim;
 
     void Start()
     {
@@ -38,7 +44,13 @@ public class SCR_GameManager : MonoBehaviour
 
     public void endDay() //call when end of day is pressed
     {
+        StartCoroutine(NightTimer());
+
+        buttonManager.closeApp();
+
         dayNightAnim.SetBool("IsDay", false);
+        laptopAnim.SetBool("IsDay", false);
+        monitorOverlayAnim.SetBool("CompOn", false);
 
         isDaytime = false;
 
@@ -47,8 +59,18 @@ public class SCR_GameManager : MonoBehaviour
     public void startDay() //call when night is over
     {
         dayNightAnim.SetBool("IsDay", true);
+        laptopAnim.SetBool("IsDay", true);
+        //arm2Anim.SetBool("PCInteract", true);
+        monitorOverlayAnim.SetBool("CompOn", true);
 
         isDaytime = true;
         daysSurvived = daysSurvived + 1;
+    }
+
+    IEnumerator NightTimer()
+    {
+        yield return new WaitForSeconds(5f);
+
+        startDay();
     }
 }
