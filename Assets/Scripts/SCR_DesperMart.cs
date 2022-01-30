@@ -8,6 +8,9 @@ public class SCR_DesperMart : MonoBehaviour
     public Image DroneSpriteSlot;
     public Animator animController;
 
+    public GameObject trouserOverlay;
+    public GameObject transactionOverlay;
+
     public Sprite LogsImage;
     public Sprite CanImage;
     public Sprite TrousersImage;
@@ -16,10 +19,16 @@ public class SCR_DesperMart : MonoBehaviour
 
     public void BuyCannedBrad() => BuyItem(100, CanImage);
 
-    public void BuyTrousers() => BuyItem(100, TrousersImage);
+    public void BuyTrousers()
+    {
+        BuyItem(100, TrousersImage);
+        trouserOverlay.SetActive(true);
+    }
 
     public void BuyItem(int cost, Sprite image)
     {
+        transactionOverlay.SetActive(true);
+
         // cost
         animController.SetBool("ItemBought", true);
         DroneSpriteSlot.sprite = image;
@@ -32,5 +41,7 @@ public class SCR_DesperMart : MonoBehaviour
 
         DroneSpriteSlot.sprite = null;
         animController.SetBool("ItemBought", false);
+
+        transactionOverlay.SetActive(false);
     }
 }
