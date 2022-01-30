@@ -7,7 +7,7 @@ public class SurveyHandler : MonoBehaviour
 {
     public TMP_Text questionSlot;
     public GameObject questionPanel;
-    public SCR_ButtonManager buttonManager;
+    public SCR_GameManager gameManager;
 
     public string[] questions;
 
@@ -79,7 +79,7 @@ public class SurveyHandler : MonoBehaviour
     public void OnQuestionSubmit()
     {
         QuestionsDone++;
-        buttonManager.gameManager.RewardPlayer();
+        gameManager.RewardPlayer();
 
         if (QuestionsDone >= 3)
         {

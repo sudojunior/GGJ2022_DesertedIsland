@@ -3057,7 +3057,6 @@ MonoBehaviour:
   App1: {fileID: 719283341}
   App2: {fileID: 1643061802}
   App3: {fileID: 919201569}
-  gameManager: {fileID: 1674330360}
 --- !u!1 &411650527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8256,8 +8255,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionSlot: {fileID: 2024336627}
-  questionPanel: {fileID: 0}
-  questions: []
+  questionPanel: {fileID: 147828288}
+  gameManager: {fileID: 1674330360}
+  questions:
+  - Q1
+  - Q2
+  - Q3
+  - Q4
   QuestionsDone: 0
 --- !u!1 &926675329
 GameObject:
@@ -14462,7 +14466,13 @@ MonoBehaviour:
   isDaytime: 0
   playerBal: 0
   daysSurvived: 0
+  balTextSlot: {fileID: 454786526}
+  buttonManager: {fileID: 0}
   dayNightAnim: {fileID: 645713521}
+  arm1Anim: {fileID: 0}
+  arm2Anim: {fileID: 0}
+  laptopAnim: {fileID: 0}
+  monitorOverlayAnim: {fileID: 0}
 --- !u!1 &1716625512
 GameObject:
   m_ObjectHideFlags: 0
