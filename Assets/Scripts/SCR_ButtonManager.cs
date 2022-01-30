@@ -9,8 +9,6 @@ public class SCR_ButtonManager : MonoBehaviour
     public GameObject App2;
     public GameObject App3;
 
-    public SCR_GameManager gameManager;
-
     void Start()
     {
         desktopApp.SetActive(false);
@@ -54,12 +52,6 @@ public class SCR_ButtonManager : MonoBehaviour
         App3.SetActive(false);
 
         print("Close App");
-
-    }
-
-    public void dayEnd()
-    {
-        print("End day");
 
     }
 }
