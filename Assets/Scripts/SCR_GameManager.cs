@@ -29,9 +29,13 @@ public class SCR_GameManager : MonoBehaviour
 
     public float playerHunger;
 
+    public TMP_Text surviveText;
+
     void Start()
     {
         dayNightAnim.SetBool("IsDay", true);
+
+        surviveText.SetText("Days Survived: {0}", daysSurvived);
 
         isDaytime = true;
         playerBal = 2;
@@ -82,6 +86,8 @@ public class SCR_GameManager : MonoBehaviour
 
         isDaytime = true;
         daysSurvived = daysSurvived + 1;
+
+        surviveText.SetText("Days Survived: {0}", daysSurvived);
 
         coinFlipGame.coinFlipReset();
     }

@@ -54,6 +54,8 @@ public class CoinFlipGame : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        canFlip = true;
+
         outcomeText.SetText(" ");
     }
 
@@ -102,6 +104,10 @@ public class CoinFlipGame : MonoBehaviour
 
                             poolText.SetText("POOL: {0}", pool);
                         }
+
+                        flipped = false;
+
+                        canFlip = false;
                         break;
 
                     case CoinState.Tails:
@@ -121,14 +127,24 @@ public class CoinFlipGame : MonoBehaviour
 
                             poolText.SetText("POOL: {0}", pool);
                         }
+
+                        flipped = false;
+
+                        canFlip = false;
                         break;
 
                     case CoinState.Edge:
+                        outcomeText.SetText("EDGE!");
+
                         pool = pool * 3;
                         gameManager.playerBal = pool;
                         pool = 0;
 
                         poolText.SetText("POOL: {0}", pool);
+
+                        flipped = false;
+
+                        canFlip = false;
                         break;
 
                     case CoinState.Moving:
@@ -147,15 +163,24 @@ public class CoinFlipGame : MonoBehaviour
 
     public void gameInitialize()
     {
-        pool = gameManager.playerBal;
-        gameManager.playerBal = gameManager.playerBal - gameManager.playerBal;
+        outcomeText.SetText(" ");
 
-        poolText.SetText("POOL: {0}", pool);
+        if (gameManager.playerBal > 0)
+        {
+            pool = gameManager.playerBal;
+            gameManager.playerBal = gameManager.playerBal - gameManager.playerBal;
 
-        allInButton.SetActive(false);
+            poolText.SetText("POOL: {0}", pool);
 
-        headsButton.SetActive(true);
-        tailsButton.SetActive(true);
+            allInButton.SetActive(false);
+
+            headsButton.SetActive(true);
+            tailsButton.SetActive(true);
+        }
+        else
+        {
+            poolText.SetText("POOL: NO BAL AVAILABLE!");
+        }
     }
 
     public void heads()
@@ -216,5 +241,11 @@ public class CoinFlipGame : MonoBehaviour
         poolText.SetText(" ");
 
         allInButton.SetActive(true);
+
+        canFlip = true;
+
+        timeAcc = 0;
+
+        flipped = false;
     }
 }
