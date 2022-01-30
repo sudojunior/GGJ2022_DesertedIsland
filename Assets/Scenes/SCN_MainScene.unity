@@ -8369,10 +8369,11 @@ MonoBehaviour:
   questionPanel: {fileID: 147828288}
   gameManager: {fileID: 1674330360}
   questions:
-  - Q1
-  - Q2
-  - Q3
-  - Q4
+  - Are we better than other software companies?
+  - "Do you go to the park when you\u2019re stressed at work?"
+  - Do you consider yourself physically fit?
+  - Was the onboarding was easy to understand and very comprehensive?
+  - Was the survey content easy to find?
   QuestionsDone: 0
 --- !u!1 &926675329
 GameObject:
