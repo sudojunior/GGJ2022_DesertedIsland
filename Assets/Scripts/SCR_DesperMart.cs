@@ -18,6 +18,11 @@ public class SCR_DesperMart : MonoBehaviour
 
     public SCR_GameManager gameManager;
 
+    private void Start()
+    {
+        transactionOverlay.SetActive(false);
+    }
+
     public void BuyLogs()
     {
         float currentTemperature = gameManager.playerTemperature;
