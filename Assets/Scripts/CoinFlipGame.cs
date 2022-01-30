@@ -72,15 +72,37 @@ public class CoinFlipGame : MonoBehaviour
                 switch (state)
                 {
                     case CoinState.Heads:
-
+                        if (playerChoice)
+                        {
+                            pool = pool * 2;
+                            gameManager.playerBal = pool;
+                            pool = 0;
+                        }
+                        else
+                        {
+                            gameManager.playerBal = 0;
+                            pool = 0;
+                        }
                         break;
 
                     case CoinState.Tails:
-
+                        if (!playerChoice)
+                        {
+                            pool = pool * 2;
+                            gameManager.playerBal = pool;
+                            pool = 0;
+                        }
+                        else
+                        {
+                            gameManager.playerBal = 0;
+                            pool = 0;
+                        }
                         break;
 
                     case CoinState.Edge:
-
+                        pool = pool * 3;
+                        gameManager.playerBal = pool;
+                        pool = 0;
                         break;
 
                     case CoinState.Moving:
@@ -104,6 +126,9 @@ public class CoinFlipGame : MonoBehaviour
 
         allInButton.SetActive(false);
 
+        headsButton.SetActive(true);
+        tailsButton.SetActive(true);
+
         if (canFlip)
         {
             cantPlayOverlay.SetActive(false);
@@ -113,6 +138,26 @@ public class CoinFlipGame : MonoBehaviour
             cantPlayOverlay.SetActive(true);
         }
 
+    }
+
+    public void heads()
+    {
+        playerChoice = true;
+
+        headsButton.SetActive(false);
+        tailsButton.SetActive(false);
+
+        FlipCoin();
+    }
+
+    public void tails()
+    {
+        playerChoice = false;
+
+        headsButton.SetActive(false);
+        tailsButton.SetActive(false);
+
+        FlipCoin();
     }
 
     public void FlipCoin()
