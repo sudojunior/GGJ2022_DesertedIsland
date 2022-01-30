@@ -92,10 +92,17 @@ public class SCR_GameManager : MonoBehaviour
 
     IEnumerator NightTimer()
     {
-        for (int i = 0; i < 5; i++)
+        float delta = 0;
+        float currentHunger = playerHunger;
+        float takeHunger = Random.Range(30f, 60f);
+
+        while (delta <= 5f)
         {
-            yield return new WaitForSeconds(1f);
-            playerHunger -= Random.Range(5f, 10f);
+            float targetHunger = Mathf.Max(currentHunger - takeHunger, 0);
+            playerHunger = Mathf.SmoothStep(currentHunger, targetHunger, delta / 5);
+
+            delta += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
         if (playerHunger == 0/* || temperature == 0*/)
