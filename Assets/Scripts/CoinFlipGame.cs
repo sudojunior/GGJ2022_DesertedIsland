@@ -53,10 +53,20 @@ public class CoinFlipGame : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        outcomeText.SetText(" ");
     }
 
     private void Update()
     {
+        if (canFlip)
+        {
+            cantPlayOverlay.SetActive(false);
+        }
+        else
+        {
+            cantPlayOverlay.SetActive(true);
+        }
 
     }
 
@@ -75,7 +85,7 @@ public class CoinFlipGame : MonoBehaviour
                 switch (state)
                 {
                     case CoinState.Heads:
-                        outcomeText.SetText("Heads!");
+                        outcomeText.SetText("HEADS!");
 
                         if (playerChoice)
                         {
@@ -83,33 +93,33 @@ public class CoinFlipGame : MonoBehaviour
                             gameManager.playerBal = pool;
                             pool = 0;
 
-                            poolText.SetText("Pool:", pool);
+                            poolText.SetText("POOL: {0}", pool);
                         }
                         else
                         {
                             gameManager.playerBal = 0;
                             pool = 0;
 
-                            poolText.SetText("Pool:", pool);
+                            poolText.SetText("POOL: {0}", pool);
                         }
                         break;
 
                     case CoinState.Tails:
-                        outcomeText.SetText("Tails!");
+                        outcomeText.SetText("TAILS!");
                         if (!playerChoice)
                         {
                             pool = pool * 2;
                             gameManager.playerBal = pool;
                             pool = 0;
 
-                            poolText.SetText("Pool:", pool);
+                            poolText.SetText("POOL: {0}", pool);
                         }
                         else
                         {
                             gameManager.playerBal = 0;
                             pool = 0;
 
-                            poolText.SetText("POOL:", pool);
+                            poolText.SetText("POOL: {0}", pool);
                         }
                         break;
 
@@ -118,7 +128,7 @@ public class CoinFlipGame : MonoBehaviour
                         gameManager.playerBal = pool;
                         pool = 0;
 
-                        poolText.SetText("POOL:", pool);
+                        poolText.SetText("POOL: {0}", pool);
                         break;
 
                     case CoinState.Moving:
@@ -140,7 +150,7 @@ public class CoinFlipGame : MonoBehaviour
         pool = gameManager.playerBal;
         gameManager.playerBal = gameManager.playerBal - gameManager.playerBal;
 
-        poolText.SetText("POOL:", pool);
+        poolText.SetText("POOL: {0}", pool);
 
         allInButton.SetActive(false);
 
@@ -203,6 +213,8 @@ public class CoinFlipGame : MonoBehaviour
 
     public void coinFlipReset()
     {
+        poolText.SetText(" ");
+
         allInButton.SetActive(true);
     }
 }
