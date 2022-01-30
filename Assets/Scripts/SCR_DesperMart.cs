@@ -65,6 +65,10 @@ public class SCR_DesperMart : MonoBehaviour
         int currentBal = gameManager.playerBal;
         while (delta <= 4f)
         {
+            if (delta >= 1f)
+            {
+                animController.SetBool("ItemBought", false);
+            }
             delta += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
             gameManager.playerBal = Mathf.RoundToInt(Mathf.SmoothStep(currentBal, currentBal - cost, delta / 4));
