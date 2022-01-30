@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13989,7 +13989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DroneSpriteSlot: {fileID: 240894031}
-  DroneAnimation: {fileID: 85189209}
+  animController: {fileID: 85189209}
   LogsImage: {fileID: 21300000, guid: a1e9f7ba6a5b518439b6b4c89e8c4466, type: 3}
   CanImage: {fileID: 21300000, guid: 821651a928e084e44a4bd972c4a61346, type: 3}
   TrousersImage: {fileID: 21300000, guid: f4e23e24eb79277459dd927eb1ca8adc, type: 3}
