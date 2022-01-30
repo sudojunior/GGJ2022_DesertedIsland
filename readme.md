@@ -1,16 +1,26 @@
-### Blank Unity Project ### 
+# [Deserted Island](https://globalgamejam.org/2022/games/deserted-office-4) (GGJ 2022)
 
-This repository has been pre-configured with a .gitignore and .gitattributes file specific to Unity projects using git-lfs. 
+Deserted Office is a clicker game with an old flash game aesthetic. You are an office worker that must complete surveys sent by email to earn enough money to buy food and fuel on the desert island you find yourself on. The only problem is will it be enough, balance your income with the coinflip mini game to survive in your deserted Office!
 
-This project was created for Unity [2020.3.12](https://download.unity3d.com/download_unity/b3b2c6512326/Windows64EditorInstaller/UnitySetup64-2020.3.12f1.exe?_gl=1*19gknxd*_ga*MTQ0MTQ4NzI0Ni4xNjIxOTM4ODk1*_ga_1S78EFL1W5*MTYzMDQyMTA4MS4zMS4wLjE2MzA0MjEwODEuNjA)
+![Screenshot](./External/screenshot.png)
 
-The project has been created with a barebones folder structure.  The settings have been optimized for best 3D quality without adding any additional packages to the project.
-For 2D projects, go to Edit -> Project Settings -> Editor and set the "Default Behaviour Mode" to 2D.  Do this at the start so that imported assets are optimized automatically.
+- This repsoitory was stored on an internal GitHub Enterprise server while in development.
+- Unity Editor Version: 2020.3.12
 
-To use this repo select it from the remplate list when making a new repo.
+> Created during [Global Gam Jam 2022](https://globalgamejam.org/2022/games).
 
-Note:  Do not leave empty folders in your Unity project.  Empty folders do not get added to version control, but the meta files they create do.  This can lead to issues with keeping your project up to date.
+## Team
 
-For full details on this project's settings, please read the Changelog.md
- 
-Do you have any suggestions for improvements? Please submit a pull request!
+- [Naomi](https://naomifielder.com/)
+- [Ben](https://www.artstation.com/benhardy)
+- [Morgan](https://sudojunior.github.io)
+
+### Contributors / Special Thanks
+
+- [Jacob](https://www.jacobgibbins.com/)
+
+## Licensing
+
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
