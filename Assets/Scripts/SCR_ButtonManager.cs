@@ -37,7 +37,7 @@ public class SCR_ButtonManager : MonoBehaviour
     {
         baseApp();
         App3.SetActive(true);
-
+        App3.GetComponent<SurveyHandler>().OnSurveyStart();
     }
 
     void baseApp()
@@ -60,6 +60,6 @@ public class SCR_ButtonManager : MonoBehaviour
     public void dayEnd()
     {
         print("End day");
-
+        App3.GetComponent<SurveyHandler>().OnReset();
     }
 }
