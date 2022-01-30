@@ -12,6 +12,7 @@ public class SCR_GameManager : MonoBehaviour
     public TMP_Text balTextSlot;
 
     public SCR_ButtonManager buttonManager;
+    public CoinFlipGame coinFlipGame;
 
     public Animator dayNightAnim;
     public Animator arm1Anim;
@@ -81,6 +82,8 @@ public class SCR_GameManager : MonoBehaviour
 
         isDaytime = true;
         daysSurvived = daysSurvived + 1;
+
+        coinFlipGame.coinFlipReset();
     }
 
     public void disableShopOverlay()
