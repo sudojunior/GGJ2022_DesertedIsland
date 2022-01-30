@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SCR_GameManager : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class SCR_GameManager : MonoBehaviour
 
     public SurveyHandler surveyHandler;
 
+    public Slider hungerSlider;
+
+    public float playerHunger;
+
     void Start()
     {
         dayNightAnim.SetBool("IsDay", true);
@@ -30,7 +35,7 @@ public class SCR_GameManager : MonoBehaviour
         isDaytime = true;
         playerBal = 2;
         daysSurvived = 0;
-
+        playerHunger = 100;
     }
 
     void Update()
@@ -38,6 +43,11 @@ public class SCR_GameManager : MonoBehaviour
         if (balTextSlot.text != playerBal.ToString())
         {
             balTextSlot.text = playerBal.ToString();
+        }
+
+        if (hungerSlider.value != playerHunger / 100)
+        {
+            hungerSlider.value = playerHunger / 100;
         }
     }
 
@@ -82,7 +92,17 @@ public class SCR_GameManager : MonoBehaviour
 
     IEnumerator NightTimer()
     {
-        yield return new WaitForSeconds(5f);
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(1f);
+            playerHunger -= Random.Range(5f, 10f);
+        }
+
+        if (playerHunger == 0/* || temperature == 0*/)
+        {
+            // game over
+            Debug.Log("Game Over");
+        }
 
         startDay();
     }

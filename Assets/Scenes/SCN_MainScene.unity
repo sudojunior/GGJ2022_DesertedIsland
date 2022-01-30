@@ -10477,7 +10477,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1373261156}
   m_FillRect: {fileID: 397708581}
   m_HandleRect: {fileID: 1373261155}
@@ -14081,6 +14081,8 @@ MonoBehaviour:
   animController: {fileID: 85189209}
   transactionOverlay: {fileID: 1406327133}
   surveyHandler: {fileID: 919201573}
+  hungerSlider: {fileID: 1259333922}
+  playerHunger: 100
 --- !u!1 &1716625512
 GameObject:
   m_ObjectHideFlags: 0
