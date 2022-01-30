@@ -16,6 +16,8 @@ public class SCR_DesperMart : MonoBehaviour
     public Sprite CanImage;
     public Sprite TrousersImage;
 
+    public SCR_GameManager gameManager;
+
     public void BuyLogs() => BuyItem(100, LogsImage);
 
     public void BuyCannedBrad() => BuyItem(100, CanImage);
@@ -43,8 +45,7 @@ public class SCR_DesperMart : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         DroneSpriteSlot.sprite = null;
-        animController.SetBool("ItemBought", false);
 
-        transactionOverlay.SetActive(false);
+        gameManager.disableShopOverlay();
     }
 }

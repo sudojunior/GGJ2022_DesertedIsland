@@ -9,6 +9,10 @@ public class SCR_ButtonManager : MonoBehaviour
     public GameObject App2;
     public GameObject App3;
 
+    public Animator droneAnim;
+
+    public SCR_GameManager gameManager;
+
     void Start()
     {
         desktopApp.SetActive(false);
@@ -46,6 +50,10 @@ public class SCR_ButtonManager : MonoBehaviour
 
     public void closeApp()
     {
+        droneAnim.SetBool("ItemBought", false);
+
+        gameManager.disableShopOverlay();
+
         desktopApp.SetActive(false);
         App1.SetActive(false);
         App2.SetActive(false);

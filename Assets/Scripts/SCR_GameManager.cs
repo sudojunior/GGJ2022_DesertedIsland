@@ -18,6 +18,9 @@ public class SCR_GameManager : MonoBehaviour
     public Animator laptopAnim;
     public Animator monitorOverlayAnim;
 
+    public Animator animController;
+    public GameObject transactionOverlay;
+
     public SurveyHandler surveyHandler;
 
     void Start()
@@ -68,6 +71,13 @@ public class SCR_GameManager : MonoBehaviour
 
         isDaytime = true;
         daysSurvived = daysSurvived + 1;
+    }
+
+    public void disableShopOverlay()
+    {
+        animController.SetBool("ItemBought", false);
+
+        transactionOverlay.SetActive(false);
     }
 
     IEnumerator NightTimer()
