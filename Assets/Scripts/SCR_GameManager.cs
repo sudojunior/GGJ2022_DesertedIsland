@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SCR_GameManager : MonoBehaviour
 {
@@ -126,12 +127,19 @@ public class SCR_GameManager : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        if (playerHunger == 0/* || temperature == 0*/)
+        if (playerHunger == 0 || playerTemperature == 0)
         {
+            OnDeath();
+
             // game over
             Debug.Log("Game Over");
         }
 
         startDay();
+    }
+
+    public void OnDeath()
+    {
+        SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 }
