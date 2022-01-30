@@ -18,31 +18,58 @@ public class SCR_DesperMart : MonoBehaviour
 
     public SCR_GameManager gameManager;
 
-    public void BuyLogs() => BuyItem(100, LogsImage);
+    public void BuyLogs()
+    {
+        float currentTemperature = gameManager.playerTemperature;
+        BuyItem(300, LogsImage, (delta) =>
+        {
+            gameManager.playerTemperature = Mathf.SmoothStep(currentTemperature, 100, delta / 4);
+        });
+    }
 
-    public void BuyCannedBrad() => BuyItem(100, CanImage);
+    public void BuyCannedBrad() {
+        float currentHunger = gameManager.playerHunger;
+        BuyItem(80, CanImage, (delta) =>
+        {
+            gameManager.playerHunger = Mathf.SmoothStep(currentHunger, 100, delta / 4);
+        });
+
+        gameManager.playerHunger = 100;
+    }
 
     public void BuyTrousers()
     {
-        BuyItem(100, TrousersImage);
+        BuyItem(1, TrousersImage, (delta) => { });
 
         trouserOverlay.SetActive(true);
         characterLegs.SetActive(true);
     }
 
-    public void BuyItem(int cost, Sprite image)
+    public void BuyItem(int cost, Sprite image, System.Action<float> deltaCallback)
     {
+        if (gameManager.playerBal - cost < 0)
+        {
+            return;
+        }
+
         transactionOverlay.SetActive(true);
 
-        // cost
         animController.SetBool("ItemBought", true);
         DroneSpriteSlot.sprite = image;
-        StartCoroutine(ClearOnExit());
+        StartCoroutine(ClearOnExit(cost, deltaCallback));
     }
 
-    IEnumerator ClearOnExit()
+    IEnumerator ClearOnExit(int cost, System.Action<float> deltaCallback)
     {
-        yield return new WaitForSeconds(4f);
+        float delta = 0;
+        int currentBal = gameManager.playerBal;
+        while (delta <= 4f)
+        {
+            delta += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+            gameManager.playerBal = Mathf.RoundToInt(Mathf.SmoothStep(currentBal, currentBal - cost, delta / 4));
+            deltaCallback(delta);
+        }
 
         DroneSpriteSlot.sprite = null;
 

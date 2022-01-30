@@ -31,7 +31,7 @@ public class SCR_GameManager : MonoBehaviour
     public float playerHunger;
 
     public TMP_Text surviveText;
-    private float playerTemperature;
+    public float playerTemperature;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class SCR_GameManager : MonoBehaviour
         surviveText.SetText("Days Survived: {0}", daysSurvived);
 
         isDaytime = true;
-        playerBal = 2;
+        playerBal = 10;
         daysSurvived = 0;
         playerHunger = 100;
         playerTemperature = 100;
