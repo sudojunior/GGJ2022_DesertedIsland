@@ -19,8 +19,17 @@ public class CoinFlipGame : MonoBehaviour
     bool flipped = false;
     float timeAcc = 0;
 
+    public GameObject cantPlayOverlay;
+
+    public GameObject allInButton;
+    public GameObject headsButton;
+    public GameObject tailsButton;
+
+    public int pool; //money pool
+    public bool playerChoice;
+    public bool canFlip;
+
     public SCR_GameManager gameManager;
-    public Button Button;
 
     bool IsMoving
     {
@@ -62,6 +71,18 @@ public class CoinFlipGame : MonoBehaviour
                 Debug.Log($"CoinState is {state}, {timeAcc}", gameObject);
                 switch (state)
                 {
+                    case CoinState.Heads:
+
+                        break;
+
+                    case CoinState.Tails:
+
+                        break;
+
+                    case CoinState.Edge:
+
+                        break;
+
                     case CoinState.Moving:
                         // still moving
                         timeAcc = 0;
@@ -74,6 +95,24 @@ public class CoinFlipGame : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void gameInitialize()
+    {
+        pool = gameManager.playerBal;
+        gameManager.playerBal = gameManager.playerBal - gameManager.playerBal;
+
+        allInButton.SetActive(false);
+
+        if (canFlip)
+        {
+            cantPlayOverlay.SetActive(false);
+        }
+        else
+        {
+            cantPlayOverlay.SetActive(true);
+        }
+
     }
 
     public void FlipCoin()
