@@ -18,6 +18,8 @@ public class SCR_GameManager : MonoBehaviour
     public Animator laptopAnim;
     public Animator monitorOverlayAnim;
 
+    public SurveyHandler surveyHandler;
+
     void Start()
     {
         dayNightAnim.SetBool("IsDay", true);
@@ -62,6 +64,7 @@ public class SCR_GameManager : MonoBehaviour
         laptopAnim.SetBool("IsDay", true);
         //arm2Anim.SetBool("PCInteract", true);
         monitorOverlayAnim.SetBool("CompOn", true);
+        surveyHandler.OnReset();
 
         isDaytime = true;
         daysSurvived = daysSurvived + 1;

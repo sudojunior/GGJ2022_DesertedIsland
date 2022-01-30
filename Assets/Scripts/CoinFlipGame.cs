@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
 public class CoinFlipGame : MonoBehaviour
@@ -17,6 +18,9 @@ public class CoinFlipGame : MonoBehaviour
 
     bool flipped = false;
     float timeAcc = 0;
+
+    public SCR_GameManager gameManager;
+    public Button Button;
 
     bool IsMoving
     {

@@ -2145,7 +2145,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 253569799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 919201573}
+        m_TargetAssemblyTypeName: SurveyHandler, Assembly-CSharp
+        m_MethodName: OnQuestionSubmit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &253569799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7304,6 +7316,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4850881987201624169, guid: 6347a5f2bcfaa2347ab28e6e1699cc42,
+        type: 3}
+      propertyPath: Button
+      value: 
+      objectReference: {fileID: 375998805}
+    - target: {fileID: 4850881987201624169, guid: 6347a5f2bcfaa2347ab28e6e1699cc42,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1674330360}
     - target: {fileID: 5814182176072614457, guid: 6347a5f2bcfaa2347ab28e6e1699cc42,
         type: 3}
       propertyPath: m_Name
@@ -14345,9 +14367,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DroneSpriteSlot: {fileID: 240894031}
   animController: {fileID: 85189209}
-  trouserOverlay: {fileID: 496295244}
-  characterLegs: {fileID: 211514731}
-  transactionOverlay: {fileID: 74460858}
+  trouserOverlay: {fileID: 0}
+  characterLegs: {fileID: 0}
+  transactionOverlay: {fileID: 0}
   LogsImage: {fileID: 21300000, guid: a1e9f7ba6a5b518439b6b4c89e8c4466, type: 3}
   CanImage: {fileID: 21300000, guid: 821651a928e084e44a4bd972c4a61346, type: 3}
   TrousersImage: {fileID: 21300000, guid: f4e23e24eb79277459dd927eb1ca8adc, type: 3}
@@ -14470,12 +14492,13 @@ MonoBehaviour:
   playerBal: 0
   daysSurvived: 0
   balTextSlot: {fileID: 454786526}
-  buttonManager: {fileID: 0}
+  buttonManager: {fileID: 399231017}
   dayNightAnim: {fileID: 645713521}
-  arm1Anim: {fileID: 0}
-  arm2Anim: {fileID: 0}
-  laptopAnim: {fileID: 0}
-  monitorOverlayAnim: {fileID: 0}
+  arm1Anim: {fileID: 1334589258}
+  arm2Anim: {fileID: 1490358434}
+  laptopAnim: {fileID: 2069148673}
+  monitorOverlayAnim: {fileID: 1108847153}
+  surveyHandler: {fileID: 919201573}
 --- !u!1 &1716625512
 GameObject:
   m_ObjectHideFlags: 0
@@ -16773,13 +16796,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 919201569}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 919201573}
+        m_TargetAssemblyTypeName: SurveyHandler, Assembly-CSharp
+        m_MethodName: OnQuestionSubmit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
